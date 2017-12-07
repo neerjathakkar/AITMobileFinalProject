@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/action_add_from_toolbar"
+        android:id="@+id/access_list_1"
         android:orderInCategory="100"
-        android:title="Add"
-        app:showAsAction="always" />
+        android:title="List1"
+        />
 </menu>

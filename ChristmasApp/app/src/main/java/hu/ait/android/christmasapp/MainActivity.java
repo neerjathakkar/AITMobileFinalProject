@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -191,10 +192,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_add:
                 showAddItemActivity();
                 return true;
-            default:
-                showAddItemActivity();
-                return true;
+            case R.id.access_list_1:
+
         }
+
+        return false;
     }
 
     @Override

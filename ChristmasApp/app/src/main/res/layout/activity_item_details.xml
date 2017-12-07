@@ -6,29 +6,32 @@
     android:background="#b5edff">
 
     <TextView
-        android:id="@+id/tvItemName"
+    android:id="@+id/tvItemName"
+    android:textSize="20sp"
+    android:textColor="@color/colorPrimaryDark"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Item name:"
+    android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tvItemPrice"
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item name:"
+        android:text="Item price:"
         android:padding="10dp"/>
 
-    <ImageView
-        android:id="@+id/ivWeatherIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="5dp"
-        android:scaleType="fitXY" />
-
     <TextView
-        android:id="@+id/tvData"
-        android:textSize="15sp"
+        android:id="@+id/tvItemDescription"
+        android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item details"
+        android:text="Item description:"
         android:padding="10dp"/>
+
 
 
 

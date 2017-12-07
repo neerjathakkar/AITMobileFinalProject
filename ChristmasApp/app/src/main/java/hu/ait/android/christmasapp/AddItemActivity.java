@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -19,6 +20,9 @@ import io.realm.Realm;
 public class AddItemActivity extends AppCompatActivity {
     public static final String KEY_ITEM = "KEY_ITEM";
     private EditText etItem;
+    private EditText etItemDesc;
+    private EditText etItemPrice;
+    private CheckBox cbPurchased;
     private Item itemToEdit = null;
 
     @Override
@@ -41,6 +45,9 @@ public class AddItemActivity extends AppCompatActivity {
     private void setupUI() {
 
         etItem = (EditText) findViewById(R.id.etItemName);
+        etItemDesc = (EditText) findViewById(R.id.etItemDesc);
+        etItemPrice = (EditText) findViewById(R.id.etItemPrice);
+        cbPurchased = (CheckBox) findViewById(R.id.cbPurchased);
 
         Button btnSave = (Button) findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +67,9 @@ public class AddItemActivity extends AppCompatActivity {
 
         getRealm().beginTransaction();
         itemToEdit.setItemName(etItem.getText().toString());
+        itemToEdit.setDescription(etItemDesc.getText().toString());
+        itemToEdit.setPurchased(cbPurchased.isChecked());
+        itemToEdit.setItemPrice(etItemPrice.getText().toString());
         getRealm().commitTransaction();
 
         intentResult.putExtra(KEY_ITEM, itemToEdit.getItemID());

@@ -32,9 +32,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
-
-        final TextView tvData = (TextView) findViewById(R.id.tvData);
-
         handleIntent();
 
         setupUI();
@@ -53,7 +50,14 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private void setupUI() {
 
         TextView tvItemName = (TextView) findViewById(R.id.tvItemName);
+        TextView tvItemDescription = (TextView) findViewById(R.id.tvItemDescription);
+        TextView tvItemPrice = (TextView) findViewById(R.id.tvItemPrice);
+
         tvItemName.setText(itemName);
+        tvItemDescription.setText(itemToDisplay.getDescription());
+        tvItemPrice.setText(itemToDisplay.getItemPrice());
+
+
 
     }
 

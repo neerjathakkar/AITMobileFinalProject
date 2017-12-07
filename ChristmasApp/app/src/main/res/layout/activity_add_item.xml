@@ -22,6 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <EditText
+        android:id="@+id/etItemCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Item Category"/>
+
     <CheckBox
         android:id="@+id/cbPurchased"
         android:layout_width="match_parent"

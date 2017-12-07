@@ -12,6 +12,7 @@ public class Item extends RealmObject {
     private String itemPrice;
     private boolean purchased;
     private String description;
+    private String itemCategory;
 
     public Item() {
     }
@@ -57,5 +58,13 @@ public class Item extends RealmObject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getItemCategory() {
+        return itemCategory;
+    }
+
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
     }
 }

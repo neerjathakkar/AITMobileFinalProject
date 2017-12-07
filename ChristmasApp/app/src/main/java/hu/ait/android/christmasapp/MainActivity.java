@@ -17,11 +17,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import hu.ait.android.christmasapp.adapter.ItemsAdapter;
 import hu.ait.android.christmasapp.data.Item;
@@ -38,12 +41,16 @@ public class MainActivity extends AppCompatActivity {
     private CoordinatorLayout layoutContent;
     private DrawerLayout drawerLayout;
     private int itemToDisplayPosition = -1;
+    private Spinner spinnerItemCategory;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         ((MainApplication)getApplication()).openRealm();
 
@@ -52,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
         List<Item> itemsResult = new ArrayList<Item>(Arrays.asList(allItems.toArray(itemsArray)));
 
         itemsAdapter = new ItemsAdapter(itemsResult, this);
-        RecyclerView recyclerViewPlaces = (RecyclerView) findViewById(
-                R.id.recyclerViewPlaces);
-        recyclerViewPlaces.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewPlaces.setAdapter(itemsAdapter);
+        RecyclerView recyclerViewItems = (RecyclerView) findViewById(
+                R.id.recyclerViewItems);
+        recyclerViewItems.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewItems.setAdapter(itemsAdapter);
 
         ItemsListTouchHelperCallback touchHelperCallback = new ItemsListTouchHelperCallback(
                 itemsAdapter);
         ItemTouchHelper touchHelper = new ItemTouchHelper(touchHelperCallback);
-        touchHelper.attachToRecyclerView(recyclerViewPlaces);
+        touchHelper.attachToRecyclerView(recyclerViewItems);
 
         layoutContent = (CoordinatorLayout) findViewById(
                 R.id.layoutContent);
@@ -74,6 +81,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        setUpSpinner();
+
+        setUpDrawerLayout();
+
+        setUpToolBar();
+    }
+
+    private void setUpSpinner() {
+        Set<String> categories = ChristmasListModel.getInstance().getCategories();
+        spinnerItemCategory = (Spinner) findViewById(R.id.spinnerItemCategory);
+        List<String> list = new ArrayList<String>();
+
+        for (String cat : categories){
+            list.add(cat);
+        }
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerItemCategory.setAdapter(dataAdapter);
+    }
+
+    private void setUpDrawerLayout() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(
@@ -99,9 +129,8 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     }
                 });
-
-        setUpToolBar();
     }
+
     public Realm getRealm() {
         return ((MainApplication)getApplication()).getRealmItems();
     }
@@ -151,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (requestCode == REQUEST_NEW_ITEM) {
                     itemsAdapter.addItem(item);
+                    setUpSpinner();
                     showSnackBarMessage("item added");
                 }
                 break;
@@ -192,7 +222,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_add:
                 showAddItemActivity();
                 return true;
-            case R.id.access_list_1:
 
         }
 
@@ -204,4 +233,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         ((MainApplication)getApplication()).closeRealm();
     }
+
+
+
 }

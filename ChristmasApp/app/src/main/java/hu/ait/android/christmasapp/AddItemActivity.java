@@ -11,10 +11,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 import hu.ait.android.christmasapp.data.Item;
+import hu.ait.android.christmasapp.MainActivity;
 import io.realm.Realm;
+
+import android.content.Context;
 
 
 public class AddItemActivity extends AppCompatActivity {
@@ -22,6 +26,7 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText etItem;
     private EditText etItemDesc;
     private EditText etItemPrice;
+    private EditText etItemCategory;
     private CheckBox cbPurchased;
     private Item itemToEdit = null;
 
@@ -47,6 +52,7 @@ public class AddItemActivity extends AppCompatActivity {
         etItem = (EditText) findViewById(R.id.etItemName);
         etItemDesc = (EditText) findViewById(R.id.etItemDesc);
         etItemPrice = (EditText) findViewById(R.id.etItemPrice);
+        etItemCategory = (EditText) findViewById(R.id.etItemCategory);
         cbPurchased = (CheckBox) findViewById(R.id.cbPurchased);
 
         Button btnSave = (Button) findViewById(R.id.btnSave);
@@ -63,6 +69,14 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void saveItem() {
+
+        String category = etItemCategory.getText().toString();
+        Set<String> categories = ChristmasListModel.getInstance().getCategories();
+
+        if (!(categories.contains(category))){
+            ChristmasListModel.getInstance().addToCategories(category);
+        }
+
         Intent intentResult = new Intent();
 
         getRealm().beginTransaction();
@@ -70,6 +84,7 @@ public class AddItemActivity extends AppCompatActivity {
         itemToEdit.setDescription(etItemDesc.getText().toString());
         itemToEdit.setPurchased(cbPurchased.isChecked());
         itemToEdit.setItemPrice(etItemPrice.getText().toString());
+        itemToEdit.setItemCategory(etItemCategory.getText().toString());
         getRealm().commitTransaction();
 
         intentResult.putExtra(KEY_ITEM, itemToEdit.getItemID());

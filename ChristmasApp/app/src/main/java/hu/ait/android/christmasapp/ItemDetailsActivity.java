@@ -2,24 +2,11 @@ package hu.ait.android.christmasapp;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-
-import java.util.Date;
-import java.util.List;
 
 import hu.ait.android.christmasapp.data.Item;
 import io.realm.Realm;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
@@ -52,11 +39,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
         TextView tvItemName = (TextView) findViewById(R.id.tvItemName);
         TextView tvItemDescription = (TextView) findViewById(R.id.tvItemDescription);
         TextView tvItemPrice = (TextView) findViewById(R.id.tvItemPrice);
+        TextView tvItemCategory = (TextView) findViewById(R.id.tvItemCategory);
 
         tvItemName.setText(itemName);
         tvItemDescription.setText(itemToDisplay.getDescription());
         tvItemPrice.setText(itemToDisplay.getItemPrice());
-
+        tvItemCategory.setText(itemToDisplay.getItemCategory());
 
 
     }

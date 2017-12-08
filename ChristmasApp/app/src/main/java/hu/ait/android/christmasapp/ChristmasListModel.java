@@ -23,6 +23,7 @@ public class ChristmasListModel {
     public static ChristmasListModel getInstance() {
         if (christmasListModel == null) {
             christmasListModel = new ChristmasListModel();
+            christmasListModel.addToCategories("All items");
         }
 
         return christmasListModel;

@@ -18,7 +18,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private int itemToDisplayPosition = -1;
     private Spinner spinnerItemCategory;
+    private RealmResults<Item> allItems;
 
 
 
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((MainApplication)getApplication()).openRealm();
 
-        RealmResults<Item> allItems = getRealm().where(Item.class).findAll();
+        allItems = getRealm().where(Item.class).findAll();
         Item itemsArray[] = new Item[allItems.size()];
         List<Item> itemsResult = new ArrayList<Item>(Arrays.asList(allItems.toArray(itemsArray)));
 
@@ -77,6 +80,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showAddItemActivity();
+            }
+        });
+
+
+        Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               /* String spinnerValue = String.valueOf(spinnerItemCategory.getSelectedItem());
+
+                if(spinnerValue.equals("All items")){
+                    allItems = getRealm().where(Item.class).findAll();
+                }
+                else{
+                    allItems = getRealm().where(Item.class).equalTo("category", spinnerValue).findAll();
+                }*/
+                Toast.makeText(MainActivity.this,
+                        "OnClickListener : " +
+                                "\nSpinner : "+ String.valueOf(spinnerItemCategory.getSelectedItem()),
+                        Toast.LENGTH_SHORT).show();
+
             }
         });
 

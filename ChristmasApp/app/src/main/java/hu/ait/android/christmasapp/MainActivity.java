@@ -45,14 +45,13 @@ public class MainActivity extends AppCompatActivity {
     private int itemToDisplayPosition = -1;
     private Spinner spinnerItemCategory;
     private RealmResults<Item> allItems;
-
+    private Item itemsArray[];
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         ((MainApplication)getApplication()).openRealm();
@@ -84,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        submitButtonListener();
+
+        setUpSpinner();
+
+        setUpDrawerLayout();
+
+        setUpToolBar();
+    }
+
+    private void submitButtonListener() {
         Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,24 +102,22 @@ public class MainActivity extends AppCompatActivity {
 
                 if(spinnerValue.equals("All items")){
                     allItems = getRealm().where(Item.class).findAll();
+                    updateAdapterList();
                 }
-                else{
+                else {
                     allItems = getRealm().where(Item.class).equalTo("itemCategory", spinnerValue).findAll();
+                    updateAdapterList();
+
                 }
-                Toast.makeText(MainActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner : "+ String.valueOf(spinnerItemCategory.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
 
             }
         });
+    }
 
-
-        setUpSpinner();
-
-        setUpDrawerLayout();
-
-        setUpToolBar();
+    private void updateAdapterList() {
+        Item itemsArray[] = new Item[allItems.size()];
+        List<Item> itemsResult = new ArrayList<Item>(Arrays.asList(allItems.toArray(itemsArray)));
+        itemsAdapter.resetItemsList(itemsResult);
     }
 
     private void setUpSpinner() {

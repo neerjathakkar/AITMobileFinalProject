@@ -86,6 +86,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>{
 
     }
 
+    public void resetItemsList(List<Item> itemsList){
+        this.itemsList = itemsList;
+        notifyDataSetChanged();
+    }
+
     public void removeItem(int index) {
         ((MainActivity)context).deleteItem(itemsList.get(index));
         itemsList.remove(index);

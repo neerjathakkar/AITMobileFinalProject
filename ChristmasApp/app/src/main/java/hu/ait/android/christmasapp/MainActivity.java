@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               /* String spinnerValue = String.valueOf(spinnerItemCategory.getSelectedItem());
+               String spinnerValue = String.valueOf(spinnerItemCategory.getSelectedItem());
 
                 if(spinnerValue.equals("All items")){
                     allItems = getRealm().where(Item.class).findAll();
                 }
                 else{
-                    allItems = getRealm().where(Item.class).equalTo("category", spinnerValue).findAll();
-                }*/
+                    allItems = getRealm().where(Item.class).equalTo("itemCategory", spinnerValue).findAll();
+                }
                 Toast.makeText(MainActivity.this,
                         "OnClickListener : " +
                                 "\nSpinner : "+ String.valueOf(spinnerItemCategory.getSelectedItem()),

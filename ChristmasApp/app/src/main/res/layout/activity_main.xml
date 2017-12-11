@@ -52,18 +52,14 @@
 
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewItems"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        </android.support.v7.widget.RecyclerView>
-
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="bottom|end"
+            android:orientation="vertical"
+            app:layout_anchor="@+id/appbar"
+            app:layout_anchorGravity="bottom">
 
             <Spinner
                 android:id="@+id/spinnerItemCategory"
@@ -76,8 +72,16 @@
                 android:layout_height="wrap_content"
                 android:text="Submit" />
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
+
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/btnAdd"

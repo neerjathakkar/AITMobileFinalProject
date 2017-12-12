@@ -21,7 +21,7 @@ import io.realm.Realm;
 
 public class AddItemActivity extends AppCompatActivity {
     public static final String KEY_ITEM = "KEY_ITEM";
-    public static final int REQUEST_SEARCH_RESULTS = 101;
+    public static final int REQUEST_SEARCH_RESULTS = 103;
     private EditText etItem;
     private EditText etItemDesc;
     private EditText etItemPrice;
@@ -86,6 +86,7 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void saveItem() {
+        Log.e("search", "in saveItem()");
 
         String category = tvItemCategory.getText().toString();
         Set<String> categories = ChristmasListModel.getInstance().getCategories();
@@ -106,21 +107,34 @@ public class AddItemActivity extends AppCompatActivity {
 
         intentResult.putExtra(KEY_ITEM, itemToEdit.getItemID());
         setResult(RESULT_OK, intentResult);
+        Log.e("search", "about to finish");
         finish();
     }
 
     private void showSearchAmazonActivity() {
-
-        saveItem();
-
-        Log.e("search crash", "item saved");
         Intent intentStart = new Intent(AddItemActivity.this, SearchAmazonActivity.class);
         Log.e("search crash", "intent created");
-        startActivity(intentStart);
-
-        String titleOne = intentStart.getStringExtra(SearchAmazonActivity.NODE_LIST);
-        Log.e("search", "hi");
+        startActivityForResult(intentStart, REQUEST_SEARCH_RESULTS);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) {
+            case RESULT_OK:
+                if (requestCode == REQUEST_SEARCH_RESULTS) {
+                    Log.e("search", "requested search results!");
+                    String itemName = data.getStringExtra(SearchAmazonActivity.NAME_LIST);
+                    String itemPrice = data.getStringExtra(SearchAmazonActivity.PRICE_LIST);
+                    etItem.setText(itemName);
+                    etItemPrice.setText(itemPrice);
+                    saveItem();
+                }
+
+            case RESULT_CANCELED:
+                break;
+        }
+    }
+
 
 }
 

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -56,9 +59,20 @@ public class SearchAmazonActivity extends AppCompatActivity {
      * You can choose a different value if this value does not work in the
      * locale of your choice.
      */
-    private static final String ITEM_ID = "B001666E4I";
 
-    public static final String NODE_LIST = "NODE_LIST";
+    public static final String NAME_LIST = "NAME_LIST";
+    public static final String PRICE_LIST = "PRICE_LIST";
+
+    TextView tvResultOne;
+    TextView tvResultwo;
+    TextView tvResultThree;
+    TextView tvResultFour;
+    TextView tvResultFive;
+    TextView tvResultSix;
+
+    TextView tvPriceOne;
+
+    Button btnSelectOne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,28 +108,51 @@ public class SearchAmazonActivity extends AppCompatActivity {
         params.put("Service", "AWSECommerceService");
         params.put("Version", "2009-03-31");
         params.put("Operation", "ItemSearch");
-        params.put("SearchIndex", "Food");
+        params.put("SearchIndex", "All");
         params.put("Keywords", "popcorn");
-        params.put("ResponseGroup", "Small");
+        params.put("ResponseGroup", "ItemAttributes");
 
         requestUrl = helper.sign(params);
         Log.e("search", "Signed Request is \"" + requestUrl + "\"");
 
-        Intent intentResults = new Intent();
+        final Intent intentResults = new Intent();
 
         ArrayList<String> titles = fetchTitles(requestUrl);
-        Log.e("search", "Girls GGeneration Albums!");
-        for(int i = 0; i < titles.size(); i++) {
-            Log.e("search", titles.get(i));
-        }
-        try {
-            intentResults.putExtra(NODE_LIST, titles.get(1));
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return;
-        }
+        ArrayList<String> prices = fetchPrices(requestUrl);
+
+        tvResultOne = (TextView) findViewById(R.id.tvItemName);
+        tvPriceOne = (TextView) findViewById(R.id.tvItemPrice);
+        btnSelectOne = (Button) findViewById(R.id.btnSelect);
+
+        tvResultOne.setText(titles.get(0));
+        tvPriceOne.setText(prices.get(0));
+
+        Log.e("search", "before btnSelect OnClick");
+
+        btnSelectOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("search", "setting intentResults");
+                intentResults.putExtra(NAME_LIST, tvResultOne.getText());
+                intentResults.putExtra(PRICE_LIST, tvPriceOne.getText());
+                setResult(RESULT_OK, intentResults);
+                Log.e("search", "intentResults set");
+                finish();
+            }
+        });
+
+
+
+//        try {
+//            intentResults.putExtra(NAME_LIST, titles);
+//            intentResults.putExtra(PRICE_LIST, prices);
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//            return;
+//        }
     }
+
 
     /*
      * Utility function to fetch the response from the service and extract the
@@ -139,6 +176,25 @@ public class SearchAmazonActivity extends AppCompatActivity {
         }
 
         return titles;
+    }
+
+    private static ArrayList<String> fetchPrices(String requestUrl) {
+        ArrayList<String> prices = new ArrayList<String>();
+        try{
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(requestUrl);
+
+            NodeList priceNode = doc.getElementsByTagName("FormattedPrice");
+            for (int i = 0; i < priceNode.getLength(); i++) {
+                prices.add(priceNode.item(i).getTextContent());
+            }
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return prices;
     }
 
 }

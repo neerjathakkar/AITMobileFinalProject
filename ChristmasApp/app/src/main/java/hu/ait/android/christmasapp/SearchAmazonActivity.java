@@ -1,5 +1,9 @@
 package hu.ait.android.christmasapp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.w3c.dom.Document;
@@ -19,11 +23,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
  * See the README.html that came with this sample for instructions on
  * configuring and running the sample.
  */
-public class SearchAmazonActivity {
+public class SearchAmazonActivity extends AppCompatActivity {
     /*
      * Your AWS Access Key ID, as taken from the AWS Your Account page.
      */
     private static final String AWS_ACCESS_KEY_ID = "AKIAJ6KQ7UPX4TPL4GJQ";
+
+    private static final String AWS_ASSOCIATE_TAG = "aitchristmasl-20";
 
     /*
      * Your AWS Secret Key corresponding to the above ID, as taken from the AWS
@@ -52,14 +58,24 @@ public class SearchAmazonActivity {
      */
     private static final String ITEM_ID = "B001666E4I";
 
-    public static void main(String[] args) {
+    public static final String NODE_LIST = "NODE_LIST";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         /*
          * Set up the signed requests helper
          */
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_amazon);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         Log.e("search crash", "started SearchAmazonActivity");
         SignedRequestsHelper helper;
         try {
-            helper = SignedRequestsHelper.getInstance(ENDPOINT, AWS_ACCESS_KEY_ID, AWS_SECRET_KEY);
+            helper = SignedRequestsHelper.getInstance(ENDPOINT, AWS_ACCESS_KEY_ID, AWS_ASSOCIATE_TAG, AWS_SECRET_KEY);
         } catch (Exception e) {
             e.printStackTrace();
             return;
@@ -73,22 +89,31 @@ public class SearchAmazonActivity {
         /*
          * Here is an example in map form, where the request parameters are stored in a map.
          */
-        System.out.println("Map form example:");
+        Log.e("search", "Map form example:");
         Map<String, String> params = new HashMap<String, String>();
         params.put("Service", "AWSECommerceService");
         params.put("Version", "2009-03-31");
         params.put("Operation", "ItemSearch");
-        params.put("SearchIndex", "Music");
-        params.put("Keywords", "girls generation");
+        params.put("SearchIndex", "Food");
+        params.put("Keywords", "popcorn");
         params.put("ResponseGroup", "Small");
 
         requestUrl = helper.sign(params);
-        System.out.println("Signed Request is \"" + requestUrl + "\"");
+        Log.e("search", "Signed Request is \"" + requestUrl + "\"");
+
+        Intent intentResults = new Intent();
 
         ArrayList<String> titles = fetchTitles(requestUrl);
-        System.out.println("Girls GGeneration Albums!");
+        Log.e("search", "Girls GGeneration Albums!");
         for(int i = 0; i < titles.size(); i++) {
-            System.out.println(titles.get(i));
+            Log.e("search", titles.get(i));
+        }
+        try {
+            intentResults.putExtra(NODE_LIST, titles.get(1));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return;
         }
     }
 
@@ -99,9 +124,11 @@ public class SearchAmazonActivity {
     private static ArrayList<String> fetchTitles(String requestUrl) {
         ArrayList<String> titles = new ArrayList<String>();
         try {
+            Log.e("search crash", "in titles try");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(requestUrl);
+
             NodeList titleNode = doc.getElementsByTagName("Title");
 
             for(int i = 0; i < titleNode.getLength(); i++) {
@@ -110,6 +137,7 @@ public class SearchAmazonActivity {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         return titles;
     }
 

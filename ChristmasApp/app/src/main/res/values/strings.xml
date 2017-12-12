@@ -1,3 +1,70 @@
 <resources>
     <string name="app_name">Christmas App</string>
+
+    <string name="category_prompt">Category</string>
+
+    <string-array name="category_arrays">
+        <item>All</item>
+        <item>Wine</item>
+        <item>Wireless</item>
+        <item>ArtsAndCrafts</item>
+        <item>Miscellaneous</item>
+        <item>Electronics</item>
+        <item>Jewelry</item>
+        <item>MobileApps</item>
+        <item>Photo</item>
+        <item>Shoes</item>
+        <item>KindleStore</item>
+        <item>Automotive</item>
+        <item>Vehicles</item>
+        <item>Pantry</item>
+        <item>MusicalInstruments</item>
+        <item>DigitalMusic</item>
+        <item>GiftCards</item>
+        <item>FashionBaby></item>
+        <item>FashionGirls</item>
+        <item>GourmetFood</item>
+        <item>HomeGarden</item>
+        <item>MusicTracks</item>
+        <item>UnboxVideo</item>
+        <item>FashionWomen</item>
+        <item>VideoGames</item>
+        <item>FashionMen</item>
+        <item>Kitchen</item>
+        <item>Video</item>
+        <item>Software</item>
+        <item>Beauty</item>
+        <item>Grocery</item>
+        <item>FashionBoys</item>
+        <item>Industrial</item>
+        <item>PetSupplies</item>
+        <item>OfficeProducts</item>
+        <item>Magazines</item>
+        <item>Watches</item>
+        <item>Luggage</item>
+        <item>OutdoorLiving</item>
+        <item>Toys</item>
+        <item>SportingGoods</item>
+        <item>PCHardware</item>
+        <item>Movies</item>
+        <item>Books</item>
+        <item>Collectibles</item>
+        <item>Handmade</item>
+        <item>VHS</item>
+        <item>MP3Downloads</item>
+        <item>HomeAndBusinessServices</item>
+        <item>Fasion</item>
+        <item>Tools</item>
+        <item>Baby</item>
+        <item>Apparel</item>
+        <item>Marketplace</item>
+        <item>DVD</item>
+        <item>Appliances</item>
+        <item>Music</item>
+        <item>LawnAndGarden</item>
+        <item>WirelessAccessories</item>
+        <item>Blended</item>
+        <item>HealthPersonalCare</item>
+        <item>Classical</item>
+    </string-array>
 </resources>

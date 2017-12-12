@@ -69,6 +69,7 @@ public class SignedRequestsHelper {
 
     private String endpoint = null;
     private String awsAccessKeyId = null;
+    private String AssociateTag = null;
     private String awsSecretKey = null;
 
     private SecretKeySpec secretKeySpec = null;
@@ -79,11 +80,13 @@ public class SignedRequestsHelper {
      *
      * @param endpoint          Destination for the requests.
      * @param awsAccessKeyId    Your AWS Access Key ID
+     * @param AssociateTag   Your AWS Associate Tag
      * @param awsSecretKey      Your AWS Secret Key
      */
     public static SignedRequestsHelper getInstance(
             String endpoint,
             String awsAccessKeyId,
+            String AssociateTag,
             String awsSecretKey
     ) throws IllegalArgumentException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException
     {
@@ -91,12 +94,15 @@ public class SignedRequestsHelper {
         { throw new IllegalArgumentException("endpoint is null or empty"); }
         if (null == awsAccessKeyId || awsAccessKeyId.length() == 0)
         { throw new IllegalArgumentException("awsAccessKeyId is null or empty"); }
+        if (null == AssociateTag || AssociateTag.length() == 0)
+        { throw new IllegalArgumentException("AssociateTag is null or empty"); }
         if (null == awsSecretKey || awsSecretKey.length() == 0)
         { throw new IllegalArgumentException("awsSecretKey is null or empty"); }
 
         SignedRequestsHelper instance = new SignedRequestsHelper();
         instance.endpoint = endpoint.toLowerCase();
         instance.awsAccessKeyId = awsAccessKeyId;
+        instance.AssociateTag = AssociateTag;
         instance.awsSecretKey = awsSecretKey;
 
         byte[] secretyKeyBytes = instance.awsSecretKey.getBytes(UTF8_CHARSET);
@@ -121,6 +127,7 @@ public class SignedRequestsHelper {
     public String sign(Map<String, String> params) {
         // Let's add the AWSAccessKeyId and Timestamp parameters to the request.
         params.put("AWSAccessKeyId", this.awsAccessKeyId);
+        params.put("AssociateTag", this.AssociateTag);
         params.put("Timestamp", this.timestamp());
 
         // The parameters need to be processed in lexicographical order, so we'll
@@ -172,10 +179,11 @@ public class SignedRequestsHelper {
         String signature = null;
         byte[] data;
         byte[] rawHmac;
+        Base64 encoder;
         try {
             data = stringToSign.getBytes(UTF8_CHARSET);
             rawHmac = mac.doFinal(data);
-            Base64 encoder = new Base64(0);
+            encoder = new Base64();
             signature = new String(encoder.encode(rawHmac));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(UTF8_CHARSET + " is unsupported!", e);

@@ -2,6 +2,8 @@ package hu.ait.android.christmasapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,8 @@ import io.realm.Realm;
 public class AddItemActivity extends AppCompatActivity {
     public static final String KEY_ITEM = "KEY_ITEM";
     public static final int REQUEST_SEARCH_RESULTS = 103;
+    private static final String SEARCH_KEYWORD = "SEARCH_KEYWORD";
+    private static final String SEARCH_CATEGORY = "SEARCH_CATEGORY";
     private EditText etItem;
     private EditText etItemDesc;
     private EditText etItemPrice;
@@ -29,6 +33,7 @@ public class AddItemActivity extends AppCompatActivity {
     private Spinner spinnerAmazonCategory;
     private CheckBox cbPurchased;
     private Item itemToEdit = null;
+    private CoordinatorLayout layoutContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +69,16 @@ public class AddItemActivity extends AppCompatActivity {
 
         cbPurchased = (CheckBox) findViewById(R.id.cbPurchased);
 
+        layoutContent = (CoordinatorLayout) findViewById(R.id.layoutContent);
+
         Button btnSearch = (Button) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showSearchAmazonActivity();
+                if (etItem.getText() == null) {
+                    showSnackBarError("Please input at least one search keyword");
+                }
+                else { showSearchAmazonActivity(); }
             }
         });
 
@@ -79,6 +89,19 @@ public class AddItemActivity extends AppCompatActivity {
                 saveItem();
             }
         });
+    }
+
+    private void showSnackBarError(String message) {
+
+        Snackbar.make(layoutContent,
+                message,
+                Snackbar.LENGTH_LONG
+        ).setAction("hide", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //...
+            }
+        }).show();
     }
 
     public Realm getRealm() {
@@ -113,6 +136,8 @@ public class AddItemActivity extends AppCompatActivity {
 
     private void showSearchAmazonActivity() {
         Intent intentStart = new Intent(AddItemActivity.this, SearchAmazonActivity.class);
+        intentStart.putExtra(SEARCH_KEYWORD, etItem.getText().toString());
+        intentStart.putExtra(SEARCH_CATEGORY, spinnerAmazonCategory.getSelectedItem().toString());
         Log.e("search crash", "intent created");
         startActivityForResult(intentStart, REQUEST_SEARCH_RESULTS);
     }

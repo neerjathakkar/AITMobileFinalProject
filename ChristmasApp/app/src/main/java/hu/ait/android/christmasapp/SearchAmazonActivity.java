@@ -62,17 +62,31 @@ public class SearchAmazonActivity extends AppCompatActivity {
 
     public static final String NAME_LIST = "NAME_LIST";
     public static final String PRICE_LIST = "PRICE_LIST";
+    private static final java.lang.String SEARCH_KEYWORD = "SEARCH_KEYWORD";
+    private static final java.lang.String SEARCH_CATEGORY = "SEARCH_CATEGORY";
 
     TextView tvResultOne;
-    TextView tvResultwo;
+    TextView tvResultTwo;
     TextView tvResultThree;
     TextView tvResultFour;
     TextView tvResultFive;
     TextView tvResultSix;
 
     TextView tvPriceOne;
+    TextView tvPriceTwo;
+    TextView tvPriceThree;
+    TextView tvPriceFour;
+    TextView tvPriceFive;
+    TextView tvPriceSix;
 
     Button btnSelectOne;
+    Button btnSelectTwo;
+    Button btnSelectThree;
+    Button btnSelectFour;
+    Button btnSelectFive;
+    Button btnSelectSix;
+
+    String searchKeyword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +110,8 @@ public class SearchAmazonActivity extends AppCompatActivity {
         }
 
         String requestUrl = null;
-        String title = null;
+        String searchKeyword = getIntent().getExtras().getString(SEARCH_KEYWORD);
+        String searchCategory = getIntent().getExtras().getString(SEARCH_CATEGORY);
 
         /* The helper can sign requests in two forms - map form and string form */
 
@@ -108,8 +123,8 @@ public class SearchAmazonActivity extends AppCompatActivity {
         params.put("Service", "AWSECommerceService");
         params.put("Version", "2009-03-31");
         params.put("Operation", "ItemSearch");
-        params.put("SearchIndex", "All");
-        params.put("Keywords", "popcorn");
+        params.put("SearchIndex", searchCategory);
+        params.put("Keywords", searchKeyword);
         params.put("ResponseGroup", "ItemAttributes");
 
         requestUrl = helper.sign(params);
@@ -120,12 +135,15 @@ public class SearchAmazonActivity extends AppCompatActivity {
         ArrayList<String> titles = fetchTitles(requestUrl);
         ArrayList<String> prices = fetchPrices(requestUrl);
 
-        tvResultOne = (TextView) findViewById(R.id.tvItemName);
-        tvPriceOne = (TextView) findViewById(R.id.tvItemPrice);
-        btnSelectOne = (Button) findViewById(R.id.btnSelect);
+        tvResultOne = (TextView) findViewById(R.id.tvNameOne);
+        tvPriceOne = (TextView) findViewById(R.id.tvPriceOne);
+        btnSelectOne = (Button) findViewById(R.id.btnSelectOne);
 
-        tvResultOne.setText(titles.get(0));
-        tvPriceOne.setText(prices.get(0));
+        tvResultTwo = (TextView) findViewById(R.id.tvNameTwo);
+        tvPriceTwo = (TextView) findViewById(R.id.tvPriceTwo);
+        btnSelectTwo = (Button) findViewById(R.id.btnSelectTwo);
+
+        setTvText(titles, prices);
 
         Log.e("search", "before btnSelect OnClick");
 
@@ -135,6 +153,18 @@ public class SearchAmazonActivity extends AppCompatActivity {
                 Log.e("search", "setting intentResults");
                 intentResults.putExtra(NAME_LIST, tvResultOne.getText());
                 intentResults.putExtra(PRICE_LIST, tvPriceOne.getText());
+                setResult(RESULT_OK, intentResults);
+                Log.e("search", "intentResults set");
+                finish();
+            }
+        });
+
+        btnSelectTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("search", "setting intentResults");
+                intentResults.putExtra(NAME_LIST, tvResultTwo.getText());
+                intentResults.putExtra(PRICE_LIST, tvPriceTwo.getText());
                 setResult(RESULT_OK, intentResults);
                 Log.e("search", "intentResults set");
                 finish();
@@ -151,6 +181,15 @@ public class SearchAmazonActivity extends AppCompatActivity {
 //            e.printStackTrace();
 //            return;
 //        }
+    }
+
+    private void setTvText(ArrayList<String> titles, ArrayList<String> prices) {
+        tvResultOne.setText(titles.get(0));
+        tvPriceOne.setText(prices.get(0));
+
+        tvResultTwo.setText(titles.get(1));
+        tvPriceTwo.setText(prices.get(1));
+
     }
 
 

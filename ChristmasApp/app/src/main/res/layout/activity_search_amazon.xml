@@ -6,7 +6,7 @@
     android:background="#ffffff">
 
     <TextView
-        android:id="@+id/tvItemName"
+        android:id="@+id/tvNameOne"
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         android:padding="6dp"/>
 
     <TextView
-        android:id="@+id/tvItemPrice"
+        android:id="@+id/tvPriceOne"
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
@@ -24,7 +24,31 @@
         android:padding="6dp"/>
 
     <Button
-        android:id="@+id/btnSelect"
+        android:id="@+id/btnSelectOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select" />
+
+    <TextView
+        android:id="@+id/tvNameTwo"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item name:"
+        android:padding="6dp"/>
+
+    <TextView
+        android:id="@+id/tvPriceTwo"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item price:"
+        android:padding="6dp"/>
+
+    <Button
+        android:id="@+id/btnSelectTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select" />

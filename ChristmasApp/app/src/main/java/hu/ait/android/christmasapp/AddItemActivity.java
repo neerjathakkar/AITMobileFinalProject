@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,13 +24,13 @@ public class AddItemActivity extends AppCompatActivity {
     public static final String KEY_ITEM = "KEY_ITEM";
     public static final int REQUEST_SEARCH_RESULTS = 103;
     private static final String SEARCH_KEYWORD = "SEARCH_KEYWORD";
-    private static final String SEARCH_CATEGORY = "SEARCH_CATEGORY";
+    private static final String SEARCH_DEPARTMENT = "SEARCH_DEPARTMENT";
     private EditText etItem;
     private EditText etItemDesc;
     private EditText etItemPrice;
-    private TextView tvItemCategory;
-    private Spinner spinnerAmazonCategory;
-    private CheckBox cbPurchased;
+    private EditText etItemCategory;
+    private TextView tvAmazonDepartment;
+    private Spinner spinnerAmazonDepartment;
     private Item itemToEdit = null;
     private CoordinatorLayout layoutContent;
 
@@ -59,15 +58,14 @@ public class AddItemActivity extends AppCompatActivity {
         etItem = (EditText) findViewById(R.id.etItemName);
         etItemDesc = (EditText) findViewById(R.id.etItemDesc);
         etItemPrice = (EditText) findViewById(R.id.etItemPrice);
+        etItemCategory = (EditText) findViewById(R.id.etItemCategory);
 
-        tvItemCategory = (TextView) findViewById(R.id.tvItemCategory);
-        spinnerAmazonCategory = (Spinner) findViewById(R.id.spinnerAmazonCategory);
+        tvAmazonDepartment = (TextView) findViewById(R.id.tvAmazonDepartment);
+        spinnerAmazonDepartment = (Spinner) findViewById(R.id.spinnerAmazonDepartment);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.category_arrays, android.R.layout.simple_spinner_item);
+                R.array.department_arrays, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerAmazonCategory.setAdapter(adapter);
-
-        cbPurchased = (CheckBox) findViewById(R.id.cbPurchased);
+        spinnerAmazonDepartment.setAdapter(adapter);
 
         layoutContent = (CoordinatorLayout) findViewById(R.id.layoutContent);
 
@@ -111,7 +109,7 @@ public class AddItemActivity extends AppCompatActivity {
     private void saveItem() {
         Log.e("search", "in saveItem()");
 
-        String category = tvItemCategory.getText().toString();
+        String category = etItemCategory.getText().toString();
         Set<String> categories = ChristmasListModel.getInstance().getCategories();
 
         if (!(categories.contains(category))){
@@ -123,9 +121,9 @@ public class AddItemActivity extends AppCompatActivity {
         getRealm().beginTransaction();
         itemToEdit.setItemName(etItem.getText().toString());
         itemToEdit.setDescription(etItemDesc.getText().toString());
-        itemToEdit.setPurchased(cbPurchased.isChecked());
         itemToEdit.setItemPrice(etItemPrice.getText().toString());
-        itemToEdit.setItemCategory(spinnerAmazonCategory.getSelectedItem().toString());
+        itemToEdit.setItemCategory(etItemCategory.getText().toString());
+        itemToEdit.setAmazonDepartment(spinnerAmazonDepartment.getSelectedItem().toString());
         getRealm().commitTransaction();
 
         intentResult.putExtra(KEY_ITEM, itemToEdit.getItemID());
@@ -137,7 +135,7 @@ public class AddItemActivity extends AppCompatActivity {
     private void showSearchAmazonActivity() {
         Intent intentStart = new Intent(AddItemActivity.this, SearchAmazonActivity.class);
         intentStart.putExtra(SEARCH_KEYWORD, etItem.getText().toString());
-        intentStart.putExtra(SEARCH_CATEGORY, spinnerAmazonCategory.getSelectedItem().toString());
+        intentStart.putExtra(SEARCH_DEPARTMENT, spinnerAmazonDepartment.getSelectedItem().toString());
         Log.e("search crash", "intent created");
         startActivityForResult(intentStart, REQUEST_SEARCH_RESULTS);
     }
@@ -150,8 +148,10 @@ public class AddItemActivity extends AppCompatActivity {
                     Log.e("search", "requested search results!");
                     String itemName = data.getStringExtra(SearchAmazonActivity.NAME_LIST);
                     String itemPrice = data.getStringExtra(SearchAmazonActivity.PRICE_LIST);
+                    String itemDetailsUrl = data.getStringExtra(SearchAmazonActivity.URL_LIST);
                     etItem.setText(itemName);
                     etItemPrice.setText(itemPrice);
+                    etItemDesc.setText(itemDetailsUrl);
                     saveItem();
                 }
 

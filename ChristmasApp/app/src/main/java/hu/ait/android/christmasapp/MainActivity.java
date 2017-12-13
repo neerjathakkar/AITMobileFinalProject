@@ -107,9 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     allItems = getRealm().where(Item.class).equalTo("itemCategory", spinnerValue).findAll();
                     updateAdapterList();
-
                 }
-
             }
         });
     }
@@ -149,11 +147,11 @@ public class MainActivity extends AppCompatActivity {
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 break;
                             case R.id.action_about:
-                                showSnackBarMessage("about text");
+                                showSnackBarMessage(getString(R.string.about_app));
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 break;
                             case R.id.action_help:
-                                showSnackBarMessage("help text");
+                                showSnackBarMessage(getString(R.string.help_message));
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 break;
                         }
@@ -254,9 +252,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_add:
                 showAddItemActivity();
                 return true;
-
         }
-
         return false;
     }
 

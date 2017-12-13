@@ -62,8 +62,9 @@ public class SearchAmazonActivity extends AppCompatActivity {
 
     public static final String NAME_LIST = "NAME_LIST";
     public static final String PRICE_LIST = "PRICE_LIST";
+    public static final String URL_LIST = "URL_LIST";
     private static final java.lang.String SEARCH_KEYWORD = "SEARCH_KEYWORD";
-    private static final java.lang.String SEARCH_CATEGORY = "SEARCH_CATEGORY";
+    private static final java.lang.String SEARCH_DEPARTMENT = "SEARCH_DEPARTMENT";
 
     TextView tvResultOne;
     TextView tvResultTwo;
@@ -78,6 +79,14 @@ public class SearchAmazonActivity extends AppCompatActivity {
     TextView tvPriceFour;
     TextView tvPriceFive;
     TextView tvPriceSix;
+
+    TextView tvUrlOne;
+    TextView tvUrlTwo;
+    TextView tvUrlThree;
+    TextView tvUrlFour;
+    TextView tvUrlFive;
+    TextView tvUrlSix;
+
 
     Button btnSelectOne;
     Button btnSelectTwo;
@@ -111,7 +120,7 @@ public class SearchAmazonActivity extends AppCompatActivity {
 
         String requestUrl = null;
         String searchKeyword = getIntent().getExtras().getString(SEARCH_KEYWORD);
-        String searchCategory = getIntent().getExtras().getString(SEARCH_CATEGORY);
+        String searchDepartment = getIntent().getExtras().getString(SEARCH_DEPARTMENT);
 
         /* The helper can sign requests in two forms - map form and string form */
 
@@ -123,7 +132,7 @@ public class SearchAmazonActivity extends AppCompatActivity {
         params.put("Service", "AWSECommerceService");
         params.put("Version", "2009-03-31");
         params.put("Operation", "ItemSearch");
-        params.put("SearchIndex", searchCategory);
+        params.put("SearchIndex", searchDepartment);
         params.put("Keywords", searchKeyword);
         params.put("ResponseGroup", "ItemAttributes");
 
@@ -134,16 +143,39 @@ public class SearchAmazonActivity extends AppCompatActivity {
 
         ArrayList<String> titles = fetchTitles(requestUrl);
         ArrayList<String> prices = fetchPrices(requestUrl);
+        ArrayList<String> detailUrls = fetchDetailUrls(requestUrl);
 
         tvResultOne = (TextView) findViewById(R.id.tvNameOne);
         tvPriceOne = (TextView) findViewById(R.id.tvPriceOne);
+        tvUrlOne = (TextView) findViewById(R.id.tvUrlOne);
         btnSelectOne = (Button) findViewById(R.id.btnSelectOne);
 
         tvResultTwo = (TextView) findViewById(R.id.tvNameTwo);
         tvPriceTwo = (TextView) findViewById(R.id.tvPriceTwo);
+        tvUrlTwo = (TextView) findViewById(R.id.tvUrlTwo);
         btnSelectTwo = (Button) findViewById(R.id.btnSelectTwo);
 
-        setTvText(titles, prices);
+        tvResultThree = (TextView) findViewById(R.id.tvNameThree);
+        tvPriceThree = (TextView) findViewById(R.id.tvPriceThree);
+        tvUrlThree = (TextView) findViewById(R.id.tvUrlThree);
+        btnSelectThree = (Button) findViewById(R.id.btnSelectThree);
+
+        tvResultFour = (TextView) findViewById(R.id.tvNameFour);
+        tvPriceFour = (TextView) findViewById(R.id.tvPriceFour);
+        tvUrlFour = (TextView) findViewById(R.id.tvUrlFour);
+        btnSelectFour = (Button) findViewById(R.id.btnSelectFour);
+
+        tvResultFive = (TextView) findViewById(R.id.tvNameFive);
+        tvPriceFive = (TextView) findViewById(R.id.tvPriceFive);
+        tvUrlFive = (TextView) findViewById(R.id.tvUrlFive);
+        btnSelectFive = (Button) findViewById(R.id.btnSelectFive);
+
+        tvResultSix = (TextView) findViewById(R.id.tvNameSix);
+        tvPriceSix = (TextView) findViewById(R.id.tvPriceSix);
+        tvUrlSix = (TextView) findViewById(R.id.tvUrlSix);
+        btnSelectSix = (Button) findViewById(R.id.btnSelectSix);
+
+        setTvText(titles, prices, detailUrls);
 
         Log.e("search", "before btnSelect OnClick");
 
@@ -153,6 +185,7 @@ public class SearchAmazonActivity extends AppCompatActivity {
                 Log.e("search", "setting intentResults");
                 intentResults.putExtra(NAME_LIST, tvResultOne.getText());
                 intentResults.putExtra(PRICE_LIST, tvPriceOne.getText());
+                intentResults.putExtra(URL_LIST, tvUrlOne.getText());
                 setResult(RESULT_OK, intentResults);
                 Log.e("search", "intentResults set");
                 finish();
@@ -165,30 +198,104 @@ public class SearchAmazonActivity extends AppCompatActivity {
                 Log.e("search", "setting intentResults");
                 intentResults.putExtra(NAME_LIST, tvResultTwo.getText());
                 intentResults.putExtra(PRICE_LIST, tvPriceTwo.getText());
+                intentResults.putExtra(URL_LIST, tvUrlTwo.getText());
                 setResult(RESULT_OK, intentResults);
                 Log.e("search", "intentResults set");
                 finish();
             }
         });
 
+        btnSelectThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("search", "setting intentResults");
+                intentResults.putExtra(NAME_LIST, tvResultThree.getText());
+                intentResults.putExtra(PRICE_LIST, tvPriceThree.getText());
+                intentResults.putExtra(URL_LIST, tvUrlThree.getText());
+                setResult(RESULT_OK, intentResults);
+                Log.e("search", "intentResults set");
+                finish();
+            }
+        });
 
+        btnSelectFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("search", "setting intentResults");
+                intentResults.putExtra(NAME_LIST, tvResultFour.getText());
+                intentResults.putExtra(PRICE_LIST, tvPriceFour.getText());
+                intentResults.putExtra(URL_LIST, tvUrlFour.getText());
+                setResult(RESULT_OK, intentResults);
+                Log.e("search", "intentResults set");
+                finish();
+            }
+        });
 
-//        try {
-//            intentResults.putExtra(NAME_LIST, titles);
-//            intentResults.putExtra(PRICE_LIST, prices);
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//            return;
-//        }
+        btnSelectFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("search", "setting intentResults");
+                intentResults.putExtra(NAME_LIST, tvResultFive.getText());
+                intentResults.putExtra(PRICE_LIST, tvPriceFive.getText());
+                intentResults.putExtra(URL_LIST, tvUrlFive.getText());
+                setResult(RESULT_OK, intentResults);
+                Log.e("search", "intentResults set");
+                finish();
+            }
+        });
+
+        btnSelectSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("search", "setting intentResults");
+                intentResults.putExtra(NAME_LIST, tvResultSix.getText());
+                intentResults.putExtra(PRICE_LIST, tvPriceSix.getText());
+                intentResults.putExtra(URL_LIST, tvUrlSix.getText());
+                setResult(RESULT_OK, intentResults);
+                Log.e("search", "intentResults set");
+                finish();
+            }
+        });
+
     }
 
-    private void setTvText(ArrayList<String> titles, ArrayList<String> prices) {
+    private void setTvText(ArrayList<String> titles, ArrayList<String> prices, ArrayList<String> detailUrls) {
+
         tvResultOne.setText(titles.get(0));
-        tvPriceOne.setText(prices.get(0));
+        tvUrlOne.setText(detailUrls.get(0));
 
         tvResultTwo.setText(titles.get(1));
-        tvPriceTwo.setText(prices.get(1));
+        tvUrlTwo.setText(detailUrls.get(1));
+
+        tvResultThree.setText(titles.get(2));
+        tvUrlThree.setText(detailUrls.get(2));
+
+        tvResultFour.setText(titles.get(3));
+        tvUrlFour.setText(detailUrls.get(3));
+
+        tvResultFive.setText(titles.get(4));
+        tvUrlFive.setText(detailUrls.get(4));
+
+        tvResultSix.setText(titles.get(5));
+        tvUrlSix.setText(detailUrls.get(5));
+
+        if (prices.size() == titles.size()) {
+            tvPriceOne.setText(prices.get(0));
+            tvPriceTwo.setText(prices.get(1));
+            tvPriceThree.setText(prices.get(2));
+            tvPriceFour.setText(prices.get(3));
+            tvPriceFive.setText(prices.get(4));
+            tvPriceSix.setText(prices.get(5));
+        }
+
+        else {
+            tvPriceOne.setText(getString(R.string.price_message));
+            tvPriceTwo.setText(getString(R.string.price_message));
+            tvPriceThree.setText(getString(R.string.price_message));
+            tvPriceFour.setText(getString(R.string.price_message));
+            tvPriceFive.setText(getString(R.string.price_message));
+            tvPriceSix.setText(getString(R.string.price_message));
+        }
 
     }
 
@@ -226,6 +333,7 @@ public class SearchAmazonActivity extends AppCompatActivity {
 
             NodeList priceNode = doc.getElementsByTagName("FormattedPrice");
             for (int i = 0; i < priceNode.getLength(); i++) {
+
                 prices.add(priceNode.item(i).getTextContent());
             }
         }
@@ -234,6 +342,25 @@ public class SearchAmazonActivity extends AppCompatActivity {
         }
 
         return prices;
+    }
+
+    private static ArrayList<String> fetchDetailUrls(String requestUrl) {
+        ArrayList<String> detailUrls = new ArrayList<String>();
+        try{
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(requestUrl);
+
+            NodeList urlNode = doc.getElementsByTagName("DetailPageURL");
+            for (int i = 0; i < urlNode.getLength(); i++) {
+                detailUrls.add(urlNode.item(i).getTextContent());
+            }
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return detailUrls;
     }
 
 }

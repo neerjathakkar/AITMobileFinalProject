@@ -3,25 +3,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="5dp"
     android:background="#ffffff">
 
     <TextView
         android:id="@+id/tvNameOne"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item name:"
-        android:padding="6dp"/>
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tvPriceOne"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item price:"
-        android:padding="6dp"/>
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvUrlOne"
+        android:textSize="0sp"
+        android:visibility="invisible"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnSelectOne"
@@ -31,21 +36,26 @@
 
     <TextView
         android:id="@+id/tvNameTwo"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item name:"
         android:padding="6dp"/>
 
     <TextView
         android:id="@+id/tvPriceTwo"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item price:"
-        android:padding="6dp"/>
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvUrlTwo"
+        android:textSize="0sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnSelectTwo"
@@ -53,5 +63,115 @@
         android:layout_height="wrap_content"
         android:text="Select" />
 
+    <TextView
+        android:id="@+id/tvNameThree"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
+    <TextView
+        android:id="@+id/tvPriceThree"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvUrlThree"
+        android:textSize="0sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSelectThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select" />
+
+    <TextView
+        android:id="@+id/tvNameFour"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvPriceFour"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvUrlFour"
+        android:textSize="0sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSelectFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select" />
+
+    <TextView
+        android:id="@+id/tvNameFive"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvPriceFive"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvUrlFive"
+        android:textSize="0sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSelectFive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select" />
+
+    <TextView
+        android:id="@+id/tvNameSix"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvPriceSix"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvUrlSix"
+        android:textSize="0sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSelectSix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select" />
 </LinearLayout>

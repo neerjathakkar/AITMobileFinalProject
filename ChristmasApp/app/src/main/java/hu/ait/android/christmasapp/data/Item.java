@@ -10,9 +10,9 @@ public class Item extends RealmObject {
 
     private String itemName = "";
     private String itemPrice;
-    private boolean purchased;
     private String description;
     private String itemCategory;
+    private String amazonDepartment;
 
     public Item() {
     }
@@ -44,14 +44,6 @@ public class Item extends RealmObject {
         this.itemPrice = itemPrice;
     }
 
-    public boolean isPurchased() {
-        return purchased;
-    }
-
-    public void setPurchased(boolean purchased) {
-        this.purchased = purchased;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -66,5 +58,11 @@ public class Item extends RealmObject {
 
     public void setItemCategory(String itemCategory) {
         this.itemCategory = itemCategory;
+    }
+
+    public String getAmazonDepartment() { return amazonDepartment; }
+
+    public void setAmazonDepartment(String amazonDepartment) {
+        this.amazonDepartment = amazonDepartment;
     }
 }

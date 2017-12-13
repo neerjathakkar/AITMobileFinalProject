@@ -1,57 +1,60 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/etItemName"
-        android:hint="item name"
-        android:text="Item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/etItemDesc"
-        android:hint="Description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/etItemPrice"
-        android:hint="Item Price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvItemCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose Category:"/>
-
-    <Spinner
-        android:id="@+id/spinnerAmazonCategory"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/category_arrays"
-        android:prompt="@string/category_prompt" />
+        android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/cbPurchased"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Purchased" />
+        <EditText
+            android:id="@+id/etItemName"
+            android:hint="item name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnSearch"
-        android:text="Search Amazon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etItemDesc"
+            android:hint="Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnSave"
-        android:text="Save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etItemPrice"
+            android:hint="Item Price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etItemCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Item Category"/>
+
+        <TextView
+            android:id="@+id/tvAmazonDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Department:"/>
+
+        <Spinner
+            android:id="@+id/spinnerAmazonDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/department_arrays"
+            android:prompt="@string/department_prompt" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:text="Search Amazon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

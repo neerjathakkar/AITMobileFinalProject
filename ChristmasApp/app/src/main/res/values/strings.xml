@@ -1,70 +1,64 @@
 <resources>
     <string name="app_name">Christmas App</string>
 
-    <string name="category_prompt">Category</string>
+    <string name="department_prompt">Amazon Departmnet</string>
+    <string name="about_app">Santa\'s Christmas List!</string>
+    <string name="help_message">Press (+) to add an item. \'Category\' allows sorting list by wisher or other filter. You can also search Amazon!</string>
+    <string name="price_message">See Amazon for price information.</string>
 
-    <string-array name="category_arrays">
+    <string-array name="department_arrays">
         <item>All</item>
-        <item>Wine</item>
-        <item>Wireless</item>
-        <item>ArtsAndCrafts</item>
-        <item>Miscellaneous</item>
-        <item>Electronics</item>
-        <item>Jewelry</item>
-        <item>MobileApps</item>
-        <item>Photo</item>
+        <item>Apparel</item>
         <item>Shoes</item>
+        <item>Fashion</item>
+        <item>FashionWomen</item>
+        <item>FashionMen</item>
+        <item>FashionBaby</item>
+        <item>FashionGirls</item>
+        <item>FashionBoys</item>
+        <item>Toys</item>
+        <item>Watches</item>
+        <item>Jewelry</item>
+        <item>Beauty</item>
+        <item>HealthPersonalCare</item>
+        <item>Baby</item>
+        <item>HomeGarden</item>
+        <item>Kitchen</item>
+        <item>Appliances</item>
+        <item>LawnAndGarden</item>
+        <item>Tools</item>
+        <item>PetSupplies</item>
+        <item>Industrial</item>
+        <item>OfficeProducts</item>
+        <item>Luggage</item>
+        <item>OutdoorLiving</item>
+        <item>SportingGoods</item>
+        <item>Collectibles</item>
+        <item>Handmade</item>
+        <item>MusicalInstruments</item>
+        <item>DigitalMusic</item>
+        <item>MP3Downloads</item>
+        <item>Music</item>
+        <item>DVD</item>
+        <item>Video</item>
+        <item>VideoGames</item>
+        <item>Software</item>
+        <item>Electronics</item>
+        <item>PCHardware</item>
+        <item>MobileApps</item>
+        <item>Wireless</item>
+        <item>WirelessAccessories</item>
+        <item>Photo</item>
+        <item>Movies</item>
+        <item>Books</item>
         <item>KindleStore</item>
         <item>Automotive</item>
         <item>Vehicles</item>
+        <item>Wine</item>
         <item>Pantry</item>
-        <item>MusicalInstruments</item>
-        <item>DigitalMusic</item>
-        <item>GiftCards</item>
-        <item>FashionBaby></item>
-        <item>FashionGirls</item>
-        <item>GourmetFood</item>
-        <item>HomeGarden</item>
-        <item>MusicTracks</item>
-        <item>UnboxVideo</item>
-        <item>FashionWomen</item>
-        <item>VideoGames</item>
-        <item>FashionMen</item>
-        <item>Kitchen</item>
-        <item>Video</item>
-        <item>Software</item>
-        <item>Beauty</item>
         <item>Grocery</item>
-        <item>FashionBoys</item>
-        <item>Industrial</item>
-        <item>PetSupplies</item>
-        <item>OfficeProducts</item>
-        <item>Magazines</item>
-        <item>Watches</item>
-        <item>Luggage</item>
-        <item>OutdoorLiving</item>
-        <item>Toys</item>
-        <item>SportingGoods</item>
-        <item>PCHardware</item>
-        <item>Movies</item>
-        <item>Books</item>
-        <item>Collectibles</item>
-        <item>Handmade</item>
-        <item>VHS</item>
-        <item>MP3Downloads</item>
-        <item>HomeAndBusinessServices</item>
-        <item>Fasion</item>
-        <item>Tools</item>
-        <item>Baby</item>
-        <item>Apparel</item>
-        <item>Marketplace</item>
-        <item>DVD</item>
-        <item>Appliances</item>
-        <item>Music</item>
-        <item>LawnAndGarden</item>
-        <item>WirelessAccessories</item>
-        <item>Blended</item>
-        <item>HealthPersonalCare</item>
-        <item>Classical</item>
+        <item>GourmetFood</item>
+        <item>ArtsAndCrafts</item>
+        <item>Miscellaneous</item>
     </string-array>
 </resources>

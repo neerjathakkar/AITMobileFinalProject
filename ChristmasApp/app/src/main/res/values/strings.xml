@@ -8,7 +8,7 @@
     <string name="item_name">Item name</string>
     <string name="description">Description</string>
     <string name="item_price">Item Price</string>
-    <string name="item_category">Item Category</string>
+    <string name="item_category">Item Category or Wisher</string>
     <string name="choose_department">Choose Department:</string>
     <string name="search_amazon">Search Amazon</string>
     <string name="save">Save</string>

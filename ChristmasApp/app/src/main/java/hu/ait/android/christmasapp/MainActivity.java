@@ -214,11 +214,11 @@ public class MainActivity extends AppCompatActivity {
                 if (requestCode == REQUEST_NEW_ITEM) {
                     itemsAdapter.addItem(item);
                     setUpSpinner();
-                    showSnackBarMessage("item added");
+                    showSnackBarMessage("Item added!");
                 }
                 break;
             case RESULT_CANCELED:
-                showSnackBarMessage("cancelled");
+                showSnackBarMessage("Cancelled");
                 break;
         }
     }

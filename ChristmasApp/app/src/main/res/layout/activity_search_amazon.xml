@@ -4,174 +4,264 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="5dp"
-    android:background="#ffffff">
+    android:paddingRight="5dp"
+    android:background="@color/white">
 
     <TextView
-        android:id="@+id/tvNameOne"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tvPriceOne"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tvUrlOne"
-        android:textSize="0sp"
-        android:visibility="invisible"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btnSelectOne"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select" />
+        android:text="Search Results"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/darkgreen"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"/>
 
-    <TextView
-        android:id="@+id/tvNameTwo"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="6dp"/>
+        android:paddingTop="7dp"
+        android:paddingLeft="5dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvPriceTwo"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvNameOne"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvUrlTwo"
-        android:textSize="0sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvPriceOne"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnSelectTwo"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvUrlOne"
+            android:textSize="0sp"
+            android:visibility="invisible"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSelectOne"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:textColor="@color/darkgreen"
+            android:text="Select" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select" />
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingLeft="5dp">
 
-    <TextView
-        android:id="@+id/tvNameThree"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvNameTwo"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvPriceThree"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvPriceTwo"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvUrlThree"
-        android:textSize="0sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvUrlTwo"
+            android:textSize="0sp"
+            android:textColor="@color/crimson"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnSelectThree"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnSelectTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:shadowColor="@color/snow"
+            android:textColor="@color/darkgreen"
+            android:text="Select" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select" />
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingLeft="5dp">
 
-    <TextView
-        android:id="@+id/tvNameFour"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvNameThree"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvPriceFour"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvPriceThree"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvUrlFour"
-        android:textSize="0sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvUrlThree"
+            android:textSize="0sp"
+            android:textColor="@color/crimson"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnSelectFour"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnSelectThree"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:shadowColor="@color/snow"
+            android:textColor="@color/darkgreen"
+            android:text="Select" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select" />
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingLeft="5dp">
 
-    <TextView
-        android:id="@+id/tvNameFive"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvNameFour"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvPriceFive"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvPriceFour"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvUrlFive"
-        android:textSize="0sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvUrlFour"
+            android:textSize="0sp"
+            android:textColor="@color/crimson"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnSelectFive"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnSelectFour"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:shadowColor="@color/snow"
+            android:textColor="@color/darkgreen"
+            android:text="Select" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select" />
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingLeft="5dp">
 
-    <TextView
-        android:id="@+id/tvNameSix"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvNameFive"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvPriceSix"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvPriceFive"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvUrlSix"
-        android:textSize="0sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvUrlFive"
+            android:textSize="0sp"
+            android:textColor="@color/crimson"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnSelectSix"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnSelectFive"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:shadowColor="@color/snow"
+            android:textColor="@color/darkgreen"
+            android:text="Select" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select" />
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingLeft="5dp">
+
+        <TextView
+            android:id="@+id/tvNameSix"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvPriceSix"
+            android:textSize="15sp"
+            android:textColor="@color/crimson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvUrlSix"
+            android:textSize="0sp"
+            android:textColor="@color/crimson"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSelectSix"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:shadowColor="@color/snow"
+            android:textColor="@color/darkgreen"
+            android:text="@string/select" />
+
+    </LinearLayout>
+
+
 </LinearLayout>

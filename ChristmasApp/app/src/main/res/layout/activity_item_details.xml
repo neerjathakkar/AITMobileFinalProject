@@ -3,43 +3,54 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#b5edff">
+    android:background="@color/palepurple">
 
     <TextView
-    android:id="@+id/tvItemName"
-    android:textSize="20sp"
-    android:textColor="@color/colorPrimaryDark"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Item name:"
-    android:padding="10dp"/>
-
-    <TextView
-        android:id="@+id/tvItemPrice"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/tvItemName"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/forestgreen"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item price:"
-        android:padding="10dp"/>
+        android:text="@string/item_name_txt"
+        android:padding="5dp"/>
 
-    <TextView
-        android:id="@+id/tvItemDescription"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Item description:"
-        android:padding="10dp"/>
-
+        android:src="@drawable/banner"/>
 
     <TextView
         android:id="@+id/tvItemCategory"
         android:textSize="20sp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="italic"
+        android:textColor="@color/darkgrey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Item category:"
-        android:padding="10dp"/>
+        android:padding="5dp"/>
+    
+
+
+    <TextView
+        android:id="@+id/tvItemPrice"
+        android:textSize="20sp"
+        android:textColor="@color/darkgrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item price:"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvItemDescription"
+        android:textSize="20sp"
+        android:textColor="@color/darkgrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item description:"
+        android:padding="5dp"/>
+
+
 
 </LinearLayout>

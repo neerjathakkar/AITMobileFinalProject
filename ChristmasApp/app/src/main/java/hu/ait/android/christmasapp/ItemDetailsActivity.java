@@ -42,9 +42,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
         TextView tvItemCategory = (TextView) findViewById(R.id.tvItemCategory);
 
         tvItemName.setText(itemName);
-        tvItemDescription.setText(itemToDisplay.getDescription());
-        tvItemPrice.setText(itemToDisplay.getItemPrice());
-        tvItemCategory.setText(itemToDisplay.getItemCategory());
+        tvItemDescription.setText("Description of this item: " + itemToDisplay.getDescription());
+        tvItemPrice.setText("Item price: " + itemToDisplay.getItemPrice());
+        tvItemCategory.setText("This item is for: " + itemToDisplay.getItemCategory());
 
 
     }

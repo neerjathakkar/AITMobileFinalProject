@@ -1,10 +1,25 @@
 <resources>
     <string name="app_name">Christmas App</string>
 
-    <string name="department_prompt">Amazon Departmnet</string>
+    <string name="department_prompt">Amazon Department</string>
     <string name="about_app">Santa\'s Christmas List!</string>
     <string name="help_message">Press (+) to add an item. \'Category\' allows sorting list by wisher or other filter. You can also search Amazon!</string>
     <string name="price_message">See Amazon for price information.</string>
+    <string name="item_name">Item name</string>
+    <string name="description">Description</string>
+    <string name="item_price">Item Price</string>
+    <string name="item_category">Item Category</string>
+    <string name="choose_department">Choose Department:</string>
+    <string name="search_amazon">Search Amazon</string>
+    <string name="save">Save</string>
+    <string name="submit">Submit</string>
+    <string name="delete">Delete</string>
+    <string name="filler_button">Filler button</string>
+    <string name="item_details">Item details</string>
+    <string name="item">Item</string>
+    <string name="filler_button_txt">Filler button</string>
+    <string name="select">Select</string>
+    <string name="item_name_txt">Item name:</string>
 
     <string-array name="department_arrays">
         <item>All</item>

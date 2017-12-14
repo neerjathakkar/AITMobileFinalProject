@@ -7,10 +7,11 @@
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/palegreen"
+        android:id="@+id/layoutContentMainActivity"
         tools:context=".MainActivity">
 
         <android.support.design.widget.AppBarLayout
@@ -58,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:orientation="vertical"
+            android:background="@color/palegreen"
             app:layout_anchor="@+id/appbar"
             app:layout_anchorGravity="bottom">
 
@@ -68,9 +70,10 @@
 
             <Button
                 android:id="@+id/btnSubmit"
+                android:background="@color/forestgreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Submit" />
+                android:text="@string/submit" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItems"

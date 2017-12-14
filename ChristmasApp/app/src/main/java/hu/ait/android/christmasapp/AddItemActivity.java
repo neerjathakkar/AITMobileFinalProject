@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,7 +34,7 @@ public class AddItemActivity extends AppCompatActivity {
     private TextView tvAmazonDepartment;
     private Spinner spinnerAmazonDepartment;
     private Item itemToEdit = null;
-    private CoordinatorLayout layoutContent;
+    private LinearLayout layoutContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,7 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         setupUI();
-
         initCreate();
-
 
     }
 
@@ -60,20 +60,15 @@ public class AddItemActivity extends AppCompatActivity {
         etItemPrice = (EditText) findViewById(R.id.etItemPrice);
         etItemCategory = (EditText) findViewById(R.id.etItemCategory);
 
-        tvAmazonDepartment = (TextView) findViewById(R.id.tvAmazonDepartment);
-        spinnerAmazonDepartment = (Spinner) findViewById(R.id.spinnerAmazonDepartment);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.department_arrays, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerAmazonDepartment.setAdapter(adapter);
+        setupAmazonSpinner();
 
-        layoutContent = (CoordinatorLayout) findViewById(R.id.layoutContent);
+        layoutContent = (LinearLayout) findViewById(R.id.layoutContent);
 
         Button btnSearch = (Button) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etItem.getText() == null) {
+                if (etItem.getText().toString().isEmpty()) {
                     showSnackBarError("Please input at least one search keyword");
                 }
                 else { showSearchAmazonActivity(); }
@@ -87,6 +82,15 @@ public class AddItemActivity extends AppCompatActivity {
                 saveItem();
             }
         });
+    }
+
+    private void setupAmazonSpinner() {
+        tvAmazonDepartment = (TextView) findViewById(R.id.tvAmazonDepartment);
+        spinnerAmazonDepartment = (Spinner) findViewById(R.id.spinnerAmazonDepartment);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.department_arrays, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAmazonDepartment.setAdapter(adapter);
     }
 
     private void showSnackBarError(String message) {
@@ -109,27 +113,33 @@ public class AddItemActivity extends AppCompatActivity {
     private void saveItem() {
         Log.e("search", "in saveItem()");
 
-        String category = etItemCategory.getText().toString();
-        Set<String> categories = ChristmasListModel.getInstance().getCategories();
+        String etItemText = etItem.getText().toString();
+        if (TextUtils.isEmpty(etItemText)) {
+            showSnackBarError("Please input an item name");
+        }else{
+            String category = etItemCategory.getText().toString();
+            Set<String> categories = ChristmasListModel.getInstance().getCategories();
 
-        if (!(categories.contains(category))){
-            ChristmasListModel.getInstance().addToCategories(category);
+            if (!(categories.contains(category))){
+                ChristmasListModel.getInstance().addToCategories(category);
+            }
+
+            Intent intentResult = new Intent();
+
+            getRealm().beginTransaction();
+            itemToEdit.setItemName(etItem.getText().toString());
+            itemToEdit.setDescription(etItemDesc.getText().toString());
+            itemToEdit.setItemPrice(etItemPrice.getText().toString());
+            itemToEdit.setItemCategory(etItemCategory.getText().toString());
+            itemToEdit.setAmazonDepartment(spinnerAmazonDepartment.getSelectedItem().toString());
+            getRealm().commitTransaction();
+
+            intentResult.putExtra(KEY_ITEM, itemToEdit.getItemID());
+            setResult(RESULT_OK, intentResult);
+            Log.e("search", "about to finish");
+            finish();
         }
 
-        Intent intentResult = new Intent();
-
-        getRealm().beginTransaction();
-        itemToEdit.setItemName(etItem.getText().toString());
-        itemToEdit.setDescription(etItemDesc.getText().toString());
-        itemToEdit.setItemPrice(etItemPrice.getText().toString());
-        itemToEdit.setItemCategory(etItemCategory.getText().toString());
-        itemToEdit.setAmazonDepartment(spinnerAmazonDepartment.getSelectedItem().toString());
-        getRealm().commitTransaction();
-
-        intentResult.putExtra(KEY_ITEM, itemToEdit.getItemID());
-        setResult(RESULT_OK, intentResult);
-        Log.e("search", "about to finish");
-        finish();
     }
 
     private void showSearchAmazonActivity() {

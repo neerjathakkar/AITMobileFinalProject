@@ -11,19 +11,19 @@
     <style name="AppThemeTwo" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/darkred</item>
+        <item name="colorPrimaryDark">@color/crimson</item>
         <item name="colorAccent">@color/forestgreen</item>
     </style>
 
     <style name="DialogTheme" parent="Base.Theme.AppCompat.Dialog">
-        <item name="colorPrimary">@color/red</item>
-        <item name="colorPrimaryDark">@color/darkred</item>
+        <item name="colorPrimary">@color/crimson</item>
+        <item name="colorPrimaryDark">@color/crimson</item>
         <item name="colorAccent">@color/forestgreen</item>
     </style>
 
     <style name="OverlayTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="colorPrimary">@color/red</item>
-        <item name="colorPrimaryDark">@color/darkred</item>
+        <item name="colorPrimary">@color/crimson</item>
+        <item name="colorPrimaryDark">@color/crimson</item>
         <item name="colorAccent">@color/forestgreen</item>
     </style>
 

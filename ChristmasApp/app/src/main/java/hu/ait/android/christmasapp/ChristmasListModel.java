@@ -7,16 +7,11 @@ import java.util.Set;
  * Created by neerjathakkar on 12/7/17.
  */
 
-// use singleton design pattern
-    // just store the list of categories here
-
-
 
 public class ChristmasListModel {
-    // instance of myself in the class - singleton design pattern
+
     private static ChristmasListModel christmasListModel = null;
 
-    // private constructor
     private ChristmasListModel() {
     }
 

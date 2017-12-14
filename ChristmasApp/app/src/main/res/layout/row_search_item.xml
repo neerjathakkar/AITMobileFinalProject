@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Item"
+            android:text="@string/item"
             android:textColor="#dab5f4"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -41,7 +41,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:text="Filler button"
+                android:text="@string/filler_button_txt"
                 android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

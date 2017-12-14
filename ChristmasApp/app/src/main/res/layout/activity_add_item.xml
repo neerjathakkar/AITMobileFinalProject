@@ -1,41 +1,44 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    >
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/layoutContent"
+        >
 
         <EditText
             android:id="@+id/etItemName"
-            android:hint="item name"
+            android:hint="@string/item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etItemDesc"
-            android:hint="Description"
+            android:hint="@string/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etItemPrice"
-            android:hint="Item Price"
+            android:hint="@string/item_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etItemCategory"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Item Category"/>
+            android:hint="@string/item_category"/>
 
         <TextView
             android:id="@+id/tvAmazonDepartment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose Department:"/>
+            android:text="@string/choose_department"/>
 
         <Spinner
             android:id="@+id/spinnerAmazonDepartment"
@@ -46,13 +49,13 @@
 
         <Button
             android:id="@+id/btnSearch"
-            android:text="Search Amazon"
+            android:text="@string/search_amazon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnSave"
-            android:text="Save"
+            android:text="@string/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

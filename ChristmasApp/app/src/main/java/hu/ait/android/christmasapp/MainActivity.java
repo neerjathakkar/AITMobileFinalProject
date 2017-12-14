@@ -1,6 +1,7 @@
 package hu.ait.android.christmasapp;
 
 import android.content.Intent;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +22,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         touchHelper.attachToRecyclerView(recyclerViewItems);
 
         layoutContent = (CoordinatorLayout) findViewById(
-                R.id.layoutContent);
+                R.id.layoutContentMainActivity);
 
         FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
         fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void submitButtonListener() {
         Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+        toolbar.setNavigationIcon(R.drawable.santa_icon);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -250,6 +253,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
+                showAddItemActivity();
+                return true;
+            case R. id.action_add_from_toolbar:
                 showAddItemActivity();
                 return true;
         }
